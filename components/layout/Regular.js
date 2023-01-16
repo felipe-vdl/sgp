@@ -1,14 +1,16 @@
-import Navbar from "./Navbar";
-import Fogo from "./Fogo";
+import Navbar from "../UI/Navbar";
+import Fogo from "../UI/Fogo";
 
 export default function RegularLayout({ children }) {
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-1 bg-yellow-100">
+      <header className="flex py-2 items-center justify-center px-6 bg-dourado-500 text-dourado-100">
+        <Navbar />
+      </header>
+      <main className="flex-1 bg-indigo-100 text-mesquita">
         {children}
       </main>
-      <footer className="bg-dourado-900 p-1 px-4 text-dourado-50 text-end">
+      <footer className="bg-mesquita p-1 px-4 text-indigo-100 center">
         <ul className="flex items-center justify-between text-[12px]">
           <li>
             © 2023 Equipe de Desenvolvimento de Sistemas

@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import { SessionProvider } from 'next-auth/react';
-import DashboardLayout from "../layouts/Dashboard";
-import RegularLayout from "../layouts/Regular";
+import DashboardLayout from "../components/layout/Dashboard";
+import RegularLayout from "../components/layout/Regular";
 
 const layouts = {
   "dashboard": DashboardLayout,

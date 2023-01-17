@@ -2,7 +2,8 @@ import sgpLogo from "../../assets/logo-sgp.png";
 import Image from "next/image";
 
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
+
 
 import Link from "next/link";
 
@@ -13,7 +14,7 @@ export default function Navbar() {
   const { status } = useSession();
 
   return (
-    <header className="flex py-2 px-24 items-center justify-center px-6 bg-dourado-500 text-dourado-50 shadow shadow-yellow-700/50">
+    <header className="flex py-2 px-24 items-center justify-center px-6 bg-dourado-500 text-dourado-50 shadow shadow-yellow-700/50 border-b">
       <ul className="flex flex-1 justify-between items-center">
         <li>
           <Link href="/" className={`hover:text-orange-100 font-bold text-2xl`}>

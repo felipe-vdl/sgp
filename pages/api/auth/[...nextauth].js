@@ -19,10 +19,10 @@ export const authOptions = {
             email,
           }
         });        
-        if (!user) throw new Error('User doesn\'t exist.');
+        if (!user) throw new Error('O usuário não existe.');
 
         const match = await bcrypt.compare(password, user.password);
-        if (!match) throw new Error('Invalid credentials.');
+        if (!match) throw new Error('Credenciais inválidas.');
 
         return {
           name: user.name,

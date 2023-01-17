@@ -9,7 +9,7 @@ const layouts = {
 }
 
 export default function App({ Component, session, pageProps }) {
-  const Layout = layouts[Component.layout] || ((children) => <>{children}</>);
+  const Layout = layouts[Component.layout];
 
   return (
     <SessionProvider session={session}>

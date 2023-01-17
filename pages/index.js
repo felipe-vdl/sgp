@@ -2,10 +2,10 @@ import { unstable_getServerSession } from "next-auth";
 import { authOptions } from './api/auth/[...nextauth]';
 import prisma from "../db";
 
-const IndexPage = ({user}) => {
+const IndexPage = ({ user }) => {
   return (
     <div>Olá, {user.name.split(" ")[0]}.</div>
-  );
+  )
 }
 
 export const getServerSideProps = async context => {

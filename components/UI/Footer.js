@@ -1,8 +1,8 @@
 import Fogo from './Fogo';
 
-export default function Footer() {
+export default function Footer({bgColor}) {
   return (
-    <footer className="bg-indigo-500/50 py-1 px-4 text-indigo-100 center shadow-inner shadow-indigo-500/50">
+    <footer className={`${bgColor} py-1 px-4 text-indigo-100 center shadow-inner shadow-indigo-500/50`}>
       <ul className="flex items-center justify-between text-center text-[11px]">
         <li className='hover:text-white'>
           © 2023 Equipe de Desenvolvimento de Sistemas

@@ -5,14 +5,14 @@ import Sidebar from "../UI/Sidebar";
 export default function DashboardLayout({ children }) {
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
+      <Navbar bgColor="bg-dourado-500" />
       <div className="flex-1 flex">
         <Sidebar />
         <div className="flex-1 flex">
           {children}
         </div>
       </div>
-      <Footer />
+      <Footer bgColor="bg-mesquita" />
     </div>
   );
 }

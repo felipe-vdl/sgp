@@ -6,26 +6,25 @@ import { useSession, signOut } from "next-auth/react";
 
 
 import Link from "next/link";
+import ThemeToggler from "./ThemeToggler";
 
-export default function Navbar({bgColor}) {
+export default function Navbar({ bgColor }) {
   const router = useRouter();
   const activeClasses = "text-white";
 
   const { status } = useSession();
 
   return (
-    <header className={`flex py-2 px-24 items-center justify-center px-6 ${bgColor} text-dourado-50 shadow shadow-yellow-700/50 border-b`}>
-      <ul className="flex flex-1 justify-between items-center">
-        <li>
-          <Link href="/" className={`hover:text-orange-100 font-bold text-2xl`}>
-            <Image
-              src={sgpLogo}
-              width={250}
-              alt="Mesquita SGP"
-              className="drop-shadow-md w-[190px] sm:w-[230px] md:w-[250px]"
-            />
-          </Link>
-        </li>
+    <header className={`flex justify-between items-center py-3 px-6 bg-dourado text-white drop-shadow`}>
+      <Link href="/" className={`hover:text-orange-100 font-bold text-2xl`}>
+        <Image
+          src={sgpLogo}
+          width={250}
+          alt="Mesquita SGP"
+          className="drop-shadow w-[190px] sm:w-[230px] md:w-[250px]"
+        />
+      </Link>
+      <ul className="flex gap-6">
         {status === "authenticated" &&
           <>
             <li>
@@ -40,6 +39,7 @@ export default function Navbar({bgColor}) {
             </li>
           </>
         }
+        <ThemeToggler />
       </ul>
     </header>
   );

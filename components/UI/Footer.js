@@ -2,7 +2,7 @@ import Fogo from './Fogo';
 
 export default function Footer() {
   return (
-    <footer className={`bg-roxo text-white py-1 px-4`}>
+    <footer className={`bg-roxo text-white py-1 px-4 z-10`}>
       <ul className="flex items-center justify-between text-center text-[11px]">
         <li>
           © 2023 Equipe de Desenvolvimento de Sistemas

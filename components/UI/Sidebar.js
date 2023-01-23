@@ -6,10 +6,10 @@ export default function Sidebar() {
     { id: 2, name: "Suporte" },
   ]
   return (
-    <div className="bg-mesquita flex text-indigo-50">
-      <ul className="flex flex-col bg-yellow-700/30 border-r min-w-[14rem]">
+    <div className="bg-light-900 text-light-50 dark:text-dark-50 dark:bg-dark-900 z-10 shadow shadow-black/30 flex">
+      <ul className="flex flex-col border-r border-light-500 dark:border-dark-500 min-w-[14rem]">
         {groups.map(group => (
-          <Group group={group} />
+          <Group key={`${group.name}-${group.id}`} group={group} />
         ))}
       </ul>
     </div>

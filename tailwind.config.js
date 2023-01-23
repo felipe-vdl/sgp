@@ -6,7 +6,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        'up': '0 -1px 3px 0 rgb(0, 0, 0)'
+      }
+    },
     colors: { ...colors,
       'roxo': '#342a54',
       'dourado': '#bfa15f',

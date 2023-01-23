@@ -10,7 +10,7 @@ const IndexPage = ({ user }) => {
         <title>SGP Dashboard</title>
       </Head>
       <div className="m-auto">
-        <h1 className="text-slate-700 font-medium text-3xl">Olá, {user.name.split(" ")[0]}.</h1>
+        <h1 className="font-medium text-3xl">Olá, {user.name.split(" ")[0]}.</h1>
       </div>
     </>
   )

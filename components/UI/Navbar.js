@@ -29,11 +29,11 @@ export default function Navbar() {
         {status === "authenticated" &&
           <>
             <div className="peer self-stretch flex items-center">
-              <button className="bg-roxo px-4 py-2 rounded-full text-4xl">{data.user.name.charAt(0)}</button>
+              <button className="aspect-square bg-roxo px-4 py-2 rounded-full text-4xl">{data.user.name.charAt(0)}</button>
             </div>
-            <div className="p-3 w-[8rem] absolute left-[-1.2rem] border border-t-0 dark:border-dark-500 shadow shadow-black/30 z-10 top-[5.45rem] sm:top-[6.25rem] md:top-[6.7rem] text-base hidden peer-hover:flex hover:flex flex-col items-end text-light-50 bg-light-500 dark:bg-dark-500 dark:text-dark-50">
-              <Link href="/changepassword">Alterar Senha</Link>
-              <button onClick={() => signOut({ callbackUrl: "/login" })}>Sair</button>
+            <div className="w-[8rem] font-light absolute left-[-1.2rem] border border-t-0 dark:border-dark-500 shadow shadow-black/30 z-10 top-[5.45rem] sm:top-[6.25rem] md:top-[6.7rem] text-base hidden peer-hover:flex hover:flex flex-col items-end text-light-50 bg-light-500 dark:bg-dark-500 dark:text-dark-50">
+              <Link className="text-end p-2 hover:bg-light-900 dark:hover:bg-dark-900 border-b light:border-light-500 dark:border-dark-900 w-full" href="/changepassword">Alterar Senha</Link>
+              <button className="text-end w-full p-2 hover:bg-light-900 dark:hover:bg-dark-900" onClick={() => signOut({ callbackUrl: "/login" })}>Sair</button>
             </div>
           </>
         }

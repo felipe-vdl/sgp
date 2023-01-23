@@ -10,7 +10,7 @@ export default function ({ group }) {
   return (
     <div key={`${group.id}-${group.name}`} className="border-b border-light-500 dark:border-dark-500 shadow shadow-black/20">
       <div className="flex items-center justify-between gap-2 cursor-pointer p-2 hover:bg-slate-200 dark:hover:bg-slate-900/50" onClick={handleClick}>
-        <h2>{group.name}</h2>
+        <h2 className="py-1">{group.name}</h2>
         {isOpen ?
           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" fill="currentColor" viewBox="0 0 16 16">
             <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />

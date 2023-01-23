@@ -1,7 +1,26 @@
+import { useState, useEffect } from "react";
+
 import Group from "./Group";
 import Configs from "./Configs";
 
 export default function Sidebar() {
+  const [authUser, setAuthUser] = useState(null);
+
+  useEffect(() => {
+    const getUserData = async () => {
+      const response = await fetch('/api/user/get-user', {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      });
+      const data = await response.json();
+      setAuthUser(data);
+    }
+
+    getUserData();
+  }, []);
+
   const groups = [
     { id: 1, name: "Desenvolvimento" },
     { id: 2, name: "Infraestrutura" },
@@ -13,7 +32,9 @@ export default function Sidebar() {
         {groups.map(group => (
           <Group key={`${group.name}-${group.id}`} group={group} />
         ))}
-        <Configs className="mt-auto" />
+        {
+          authUser && authUser.role === "STAFF" && <Configs className="mt-auto" />
+        }
       </ul>
     </div>
   );

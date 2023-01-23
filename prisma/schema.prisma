@@ -13,11 +13,11 @@ datasource db {
 model User {
   id          Int @id @default(autoincrement())
   email       String @unique
-  name        String
-  password    String
+  name        String @db.Text
+  password    String @db.Text
   role        Role @default(USER)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime? @updatedAt
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime? @updatedAt @map("updated_at")
 
   createdGroups   Group[]
   createdProjects Project[]
@@ -38,21 +38,22 @@ enum Role {
 model Group {
   id        Int      @id @default(autoincrement())
   name      String   @unique
-  createdAt DateTime @default(now())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
 
   creator   User @relation(fields: [creatorId], references: [id])
-  creatorId Int
+  creatorId Int @map("creator_id")
   users UsersOnGroups[]
 
   @@map("groups")
 }
 model UsersOnGroups {
   user       User  @relation(fields: [userId], references: [id])
-  userId     Int
+  userId     Int @map("user_id")
   group      Group @relation(fields: [groupId], references: [id])
-  groupId    Int
+  groupId    Int @map("group_id")
   role       GroupRole @default(MEMBER)
-  assignedAt DateTime @default(now())
+  assignedAt DateTime @default(now()) @map("assigned_at")
 
   @@id([userId, groupId])
   @@map("users_groups")
@@ -65,13 +66,13 @@ enum GroupRole {
 model Project {
   id    Int @id @default(autoincrement())
   name  String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime? @updatedAt
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime? @updatedAt @map("updated_at")
   
   tasks Task[]
   
   creator   User @relation(fields: [creatorId], references: [id])
-  creatorId Int
+  creatorId Int @map("creator_id")
 
   @@map("projects")
 }
@@ -79,22 +80,23 @@ model Project {
 model Task {
   id           Int @id @default(autoincrement())
   name         String
-  description  String?
+  description  String? @db.Text
   status       Int @default(1)
-  startDate    DateTime?
-  deadlineDate DateTime?
-  deliveryDate DateTime?
+  startDate    DateTime? @map("start_date")
+  deadlineDate DateTime? @map("deadline_date")
+  deliveryDate DateTime? @map("delivery_date")
+  evaluateDate DateTime? @map("evaluate_date")
 
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime? @updatedAt
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime? @updatedAt @map("updated_at")
 
   comments     Comment[]
   
   project      Project @relation(fields: [projectId], references: [id])
-  projectId    Int
+  projectId    Int @map("project_id")
 
   creator      User @relation(fields: [creatorId], references: [id])
-  creatorId    Int
+  creatorId    Int @map("creator_id")
 
   taskLogs     TaskLog[]
 
@@ -106,26 +108,26 @@ model Task {
 model TaskLog {
   id              Int @id @default(autoincrement())
 
-  previous_status Int
-  applied_status  Int
+  previousStatus Int @map("previous_status")
+  appliedStatus  Int @map("applied_status")
 
   user User @relation(fields: [userId], references: [id])
-  userId Int
+  userId Int @map("user_id")
 
   task Task @relation(fields: [taskId], references: [id])
-  taskId Int 
+  taskId Int @map("task_id")
 
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime? @updatedAt
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime? @updatedAt @map("updated_at")
 
   @@map("task_logs")
 }
 model UsersOnTasks {
   user       User  @relation(fields: [userId], references: [id])
-  userId     Int
+  userId     Int @map("user_id")
   task       Task @relation(fields: [taskId], references: [id])
-  taskId    Int
-  assignedAt DateTime @default(now())
+  taskId     Int @map("task_id")
+  assignedAt DateTime @default(now()) @map("assigned_at")
 
   @@id([userId, taskId])
   @@map("users_tasks")
@@ -134,16 +136,16 @@ model UsersOnTasks {
 model Comment {
   id         Int @id @default(autoincrement())
 
-  content    String
+  content    String @db.Text
 
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime? @updatedAt
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime? @updatedAt @map("updated_at")
 
   task       Task @relation(fields: [taskId], references: [id])
-  taskId     Int
+  taskId     Int @map("task_id")
 
   creator    User @relation(fields: [creatorId], references: [id])
-  creatorId  Int
+  creatorId  Int @map("creator_id")
 
   @@map("comments")
 }
@@ -153,8 +155,8 @@ model Flag {
   name  String
   color String
 
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime? @updatedAt
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime? @updatedAt @map("updated_at")
 
   tasks FlagsOnTasks[]
 
@@ -162,10 +164,10 @@ model Flag {
 }
 model FlagsOnTasks {
   flag       Flag  @relation(fields: [flagId], references: [id])
-  flagId     Int
+  flagId     Int @map("flag_id")
   task       Task @relation(fields: [taskId], references: [id])
-  taskId     Int
-  assignedAt DateTime @default(now())
+  taskId     Int @map("task_id")
+  assignedAt DateTime @default(now()) @map("assigned_at")
 
   @@id([flagId, taskId])
   @@map("flags_tasks")

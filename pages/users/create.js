@@ -4,12 +4,14 @@ import prisma from "../../db";
 
 const UserCreate = () => {
   return (
-    <div>Create New User</div>
+    <form action="/users/create" method="POST">
+
+    </form>
   );
 }
 
 export const getServerSideProps = async context => {
-  const session = await unstable_getServerSession();
+  const session = await unstable_getServerSession(context.req, context.res, authOptions);
 
   if (!session) {
     return {

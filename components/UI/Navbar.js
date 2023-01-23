@@ -29,7 +29,7 @@ export default function Navbar() {
         {status === "authenticated" &&
           <>
             <div className="peer self-stretch flex items-center">
-              <button className="bg-roxo px-4 py-2 rounded-full">{data.user.name.charAt(0)}</button>
+              <button className="bg-roxo px-4 py-2 rounded-full text-4xl">{data.user.name.charAt(0)}</button>
             </div>
             <div className="p-3 w-[8rem] absolute left-[-1.2rem] border border-t-0 dark:border-dark-500 shadow shadow-black/30 z-10 top-[5.45rem] sm:top-[6.25rem] md:top-[6.7rem] text-base hidden peer-hover:flex hover:flex flex-col items-end text-light-50 bg-light-500 dark:bg-dark-500 dark:text-dark-50">
               <Link href="/changepassword">Alterar Senha</Link>

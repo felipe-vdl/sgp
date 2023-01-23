@@ -1,4 +1,6 @@
 import Group from "./Group";
+import Configs from "./Configs";
+
 export default function Sidebar() {
   const groups = [
     { id: 1, name: "Desenvolvimento" },
@@ -11,6 +13,7 @@ export default function Sidebar() {
         {groups.map(group => (
           <Group key={`${group.name}-${group.id}`} group={group} />
         ))}
+        <Configs className="mt-auto" />
       </ul>
     </div>
   );
